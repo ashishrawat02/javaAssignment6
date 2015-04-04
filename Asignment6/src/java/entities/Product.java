@@ -21,29 +21,29 @@ public class Product {
 
     public Product() {
     }
-     
+
     public Product(int productId, String name, String description, int quantity) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
     }
-    
-    public Product (JsonObject json){
-    productId = json.getInt("productId");
-    name = json.getString("name");
-    description = json.getString("description");
-    quantity = json.getInt("quantity");
-        
+
+    public Product(JsonObject json) {
+        productId = json.getInt("productId");
+        name = json.getString("name");
+        description = json.getString("description");
+        quantity = json.getInt("quantity");
+
     }
-    
-    public JsonObject toJSON(){
-     return Json.createObjectBuilder()
-             .add("productId",productId)
-              .add("name",name)
-              .add("description",description)
-              .add("quantity",quantity)
-             .build();
+
+    public JsonObject toJSON() {
+        return Json.createObjectBuilder()
+                .add("productId", productId)
+                .add("name", name)
+                .add("description", description)
+                .add("quantity", quantity)
+                .build();
     }
 
     public int getProductId() {
@@ -77,7 +77,5 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
 
 }
