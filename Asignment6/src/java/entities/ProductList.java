@@ -36,10 +36,10 @@ public class ProductList {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Product p = new Product(
-                        rs.getInt("ProductID"),
-                        rs.getString("Name"),
-                        rs.getString("Description"),
-                        rs.getInt("Quantity"));
+                        rs.getInt("productId"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getInt("quantity"));
                 productlist.add(p);
             }
         } catch (SQLException ex) {
@@ -70,7 +70,7 @@ public class ProductList {
     }
 
     public void add(Product p) throws Exception {
-        int result = doUpdate("INSERT INTO product (ProductID, Name, Description, Quantity) VALUES (?, ?, ?, ?)",
+        int result = doUpdate("INSERT INTO product (productId, name, description, quantity) VALUES (?, ?, ?, ?)",
                 String.valueOf(p.getProductId()),
                 p.getName(),
                 p.getDescription(),
@@ -87,7 +87,7 @@ public class ProductList {
     }
 
     public void remove(int productId) throws Exception {
-        int result = doUpdate("DELETE FROM product WHERE ProductID = ?",
+        int result = doUpdate("DELETE FROM product WHERE productId = ?",
                 String.valueOf(productId));
         if (result > 0) {
             Product original = get(productId);
